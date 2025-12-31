@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome - Secured Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>🎉 Success!</h1>
+            <p>Welcome, <b id="username-display">User</b>!</p>
+            <p>You have accessed the secured dashboard.</p>
+            <button onclick="logout()" style="background-color: #ff4757;">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        const user = localStorage.getItem("loggedInUser");
+        if(!user) {
+            // If not logged in, kick them back to login page
+            window.location.href = "index.html";
+        } else {
+            document.getElementById("username-display").innerText = user;
+        }
+
+        function logout() {
+            localStorage.removeItem("loggedInUser");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
